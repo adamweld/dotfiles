@@ -17,7 +17,3 @@ alias ud='sudo apt-get update && sudo apt-get upgrade'
 alias ug='sudo apt-get dist-upgrade'
 alias ar='sudo apt-get autoremove'
 
-#hardware
-alias backlight='xbacklight -set'
-
-
