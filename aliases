@@ -20,4 +20,7 @@ alias ar='sudo apt-get autoremove'
 #hardware
 alias backlight='xbacklight -set'
 
+#ssh
+alias sunlab='aaw218@sunlab.cse.lehigh.edu'
+alias lehigh='aaw218@ssh.lehigh.edu'
 
