@@ -1,5 +1,5 @@
 " Dotfiles
-" Thu 02 Oct 2014 08:48:01 PM EDT
+" 29 Oct 2014 (Wed)
 
 "start pathogen plugin manager
 execute pathogen#infect()
@@ -15,12 +15,16 @@ let mapleader = " "
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set mouse=a
+set mousehide     " Hide the mouse cursor while typing
 set ttyfast
 set incsearch     " do incremental searching
 set autowrite     " Automatically :write before running commands
-set backup
-set backupdir=./.backup,.,/tmp
-set directory=.,./.backup,/tmp
+set shortmess+=filmnrxoOtT
+set history=1000
+"set spell
+set hidden
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 " Numbers
 set number
@@ -42,7 +46,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects
-"       .gitignore
+  "       .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
@@ -88,8 +92,11 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 "folding settings
-set foldmethod=indent   "fold based on indent
+"set foldmethod=indent   "fold based on indent
+set foldmethod=syntax
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
+"text expansion
+iab <expr> dts strftime("%-d %b %Y (%a)")
