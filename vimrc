@@ -1,11 +1,11 @@
 " Dotfiles
 " 29 Oct 2014 (Wed)
 
-"start pathogen plugin manager
+" start pathogen plugin manager
 execute pathogen#infect()
 call pathogen#helptags()
 
-"quick window switching
+" quick window switching
 map <C-J> <C-W>j<C-W>_
 map <C-K> <C-W>k<C-W>_
 
@@ -25,6 +25,7 @@ set history=1000
 set hidden
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
+set relativenumber
 
 " Numbers
 set number
@@ -78,25 +79,44 @@ syntax on
 
 set laststatus=2
 
-"vim-airline
+" vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme             = 'powerlineish'
 let g:airline_enable_syntastic  = 1
+let g:airline#extensions#tabline#enabled = 1
+
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
+nmap <leader>T :enew<cr>
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprevious<CR>
+nmap <leader>bl :ls<CR>
 
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-"folding settings
-"set foldmethod=indent   "fold based on indent
+" folding settings
+" set foldmethod=indent   "fold based on indent
 set foldmethod=syntax
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-"text expansion
+" text expansion
 iab <expr> dts strftime("%-d %b %Y (%a)")
+
+" Syntastic
+nnoremap <leader>s :SyntasticToggleMode<CR> 
+
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
