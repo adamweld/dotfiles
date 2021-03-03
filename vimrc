@@ -1,9 +1,5 @@
 " Dotfiles
-" 29 Oct 2014 (Wed)
-
-" start pathogen plugin manager
-execute pathogen#infect()
-call pathogen#helptags()
+" 03/03/2021
 
 " quick window switching
 map <C-J> <C-W>j<C-W>_
@@ -79,13 +75,6 @@ syntax on
 
 set laststatus=2
 
-" vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme             = 'powerlineish'
-let g:airline_enable_syntastic  = 1
-let g:airline#extensions#tabline#enabled = 1
-
-
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 nmap <leader>T :enew<cr>
@@ -107,16 +96,3 @@ set foldlevel=1         "this is just what i use
 
 " text expansion
 iab <expr> dts strftime("%-d %b %Y (%a)")
-
-" Syntastic
-nnoremap <leader>s :SyntasticToggleMode<CR> 
-
-" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
