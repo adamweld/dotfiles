@@ -1,19 +1,20 @@
 - defaults:
     link:
       relink: true
+      force: true
 
 - clean: ['~']
 
 - link:
     ~/.tmux.conf: tmux.conf
-    ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.bashrc: bashrc
+        force: true
     ~/.bash_aliases: bash_aliases
     ~/.bash_profile: bash_profile
     ~/.bash_logout: bash_logout
     ~/.gitconfig: gitconfig
-      force: true
+    ~/bin: bin
 
 - create:
     - ~/.vim/undo-history

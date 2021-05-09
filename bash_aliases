@@ -97,4 +97,4 @@ alias scrn='scrot -m -c -d 5 ~/pictures/screenshots'
 alias scrs='scrot -s ~/pictures/screenshots'
 
 # vim-like exit
-alias :q='exit'
+# alias :q='exit'
