@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      relink: true
+      force: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.bashrc: bashrc
+    ~/.bash_aliases: bash_aliases
+    ~/.bash_profile: bash_profile
+    ~/.bash_logout: bash_logout
+    ~/.gitconfig: gitconfig
+    ~/bin: bin
+
+- create:
+    - ~/.vim/undo-history
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - ["cp ~/.bashrc ~/.OLDbashrc\"$(date)\" || true"]
+  - ["cp ~/.bash_logout ~/.OLDbash_logout\"$(date)\" || true"]
+  - ["cp ~/.gitconfig ~/.OLDgitconfig\"$(date)\" || true"]
+  - ["cp ~/.bash_profile ~/.OLDbash_profile\"$(date)\" || true"]
