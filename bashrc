@@ -101,7 +101,7 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Check for local definitions
-if [ -f ~/.bash_local]; then
+if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
