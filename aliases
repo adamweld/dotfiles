@@ -2,27 +2,67 @@
 
 alias mkdir='mkdir -p'
 
-#ls
+# ls
 alias la='ls -la'
 alias ll='ls -l'
 
-#cd ..
+# cd 
+alias ~="cd ~"
 alias u='cd ../'
 alias uu='cd ../../'
 alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 
-#apt-get
-alias ud='sudo apt-get update && sudo apt-get upgrade'
-alias ug='sudo apt-get dist-upgrade'
-alias ar='sudo apt-get autoremove'
+# modernized tools
+if command -v exa &> /dev/null
+then
+  alias l='exa -h'
+  alias ls='exa -h'
+  alias la='exa -ah'
+  alias ll='exa -lh'
+fi
 
-#hardware
-alias backlight='xbacklight -set'
+if command -v bat &> /dev/null
+then
+  alias cat='bat'
+fi
 
-#ssh
-alias sunlab='ssh aaw218@sunlab.cse.lehigh.edu'
-alias lehigh='ssh aaw218@ssh.lehigh.edu'
+
+# Git Aliases
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gcl='git clone'
+alias ga='git add'
+alias gall='git add .'
+alias g='git'
+alias gs='git status'
+alias gss='git status -s'
+alias gl='git pull'
+alias gpr='git pull --rebase'
+alias gpp='git pull && git push'
+alias gup='git fetch && git rebase'
+alias gp='git push'
+alias gpo='git push origin'
+alias gdv='git diff -w "$@" | vim -R -'
+alias gc='git commit -v'
+alias gca='git commit --amend'
+alias gcm='git commit -v -m'
+alias gsh="git show"
+alias gb='git branch'
+alias gcp='git cherry-pick'
+alias gco='git checkout'
+alias gll='git log --graph --pretty=oneline --abbrev-commit'
+alias gg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+gpuo() {
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}
+alias gcob='gco -b'
+alias gcan="gca --no-edit"
+
+
+# apt
+alias ud='sudo apt update && sudo apt upgrade'
+alias ar='sudo apt autoremove'
 
 # Pacman alias examples
 alias pacupg='sudo pacman -Syu'		# Synchronize with repositories and then upgrade packages that are out of date on the local system.
@@ -53,7 +93,11 @@ alias vimj='vim *.java'
 alias vimp='vim *.py'
 
 # scrot aliases
-alias scrn='scrot -m -c -d 5 ~/Pictures/screenshots'
-alias scrs='scrot -s ~/Pictures/screenshots'
+alias scrn='scrot -m -c -d 5 ~/pictures/screenshots'
+alias scrs='scrot -s ~/pictures/screenshots'
 
+# vim-like exit
 alias :q='exit'
+
+# ssh-keygen
+alias keygen='ssh-keygen -t ed25519 -C adam.weld@gmail.com'
