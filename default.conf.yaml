@@ -9,6 +9,7 @@
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/.bashrc: bashrc
+    ~/.zshrc: zshrc
     ~/.bash_aliases: aliases
     ~/.bash_profile: profile
     ~/.bash_logout: logout
@@ -17,6 +18,8 @@
 
 - create:
     - ~/.vim/undo-history
+    - ~/.vim/backup
+    - ~/.vim/swp
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
