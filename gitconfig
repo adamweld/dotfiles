@@ -26,3 +26,5 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[safe]
+	directory = /home/adamweld/.cache/yay/auto-cpufreq/src/opt/auto-cpufreq/
