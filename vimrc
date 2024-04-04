@@ -91,8 +91,3 @@ set foldlevel=1         "this is just what i use
 
 " text expansion
 iab <expr> dts strftime("%-d %b %Y (%a)")
-
-" fzf config
-source /usr/share/fzf/key-bindings.bash
-source /usr/share/fzf/completion.bash
-
