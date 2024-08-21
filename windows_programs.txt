@@ -1,0 +1,3 @@
+FunRoutine.WorkFlowy
+Microsoft.VisualStudioCode
+Microsoft.PowerToys
