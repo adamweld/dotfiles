@@ -22,8 +22,22 @@
     - ~/.vim/swp
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - ["cp ~/.bashrc ~/.OLDbashrc\"$(date)\" || true"]
-  - ["cp ~/.bash_logout ~/.OLDbash_logout\"$(date)\" || true"]
-  - ["cp ~/.gitconfig ~/.OLDgitconfig\"$(date)\" || true"]
-  - ["cp ~/.bash_profile ~/.OLDbash_profile\"$(date)\" || true"]
+    - "winget"
+
+- conditional: # if running linux
+    if: 'uname -s'
+    then:
+        shell:
+        - "cp ~/.bashrc ~/.OLDbashrc\"$(date)\" || true"
+        - "cp ~/.bash_logout ~/.OLDbash_logout\"$(date)\" || true"
+        - "cp ~/.gitconfig ~/.OLDgitconfig\"$(date)\" || true"
+        - "cp ~/.bash_profile ~/.OLDbash_profile\"$(date)\" || true"
+    else:
+        shell:
+        - winget
+        description: Installing windows programs
+
+- windows:
+    personalization:
+        background-color: "#FFFFFF"
+
