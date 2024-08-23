@@ -1,3 +1,17 @@
 FunRoutine.WorkFlowy
 Microsoft.VisualStudioCode
 Microsoft.PowerToys
+SlackTechnologies.Slack
+Google.Chrome
+Google.GoogleDrive
+VideoLAN.VLC
+CodecGuide.K-LiteCodecPack.Full
+Audacity.Audacity
+Spotify.Spotify
+qBittorrent.qBittorrent
+WinDirStat.WinDirStat
+7zip.7zip
+Python.Python.3.10
+Python.Python.3.9
+PuTTY.PuTTY
+voidtools.Everything

@@ -21,9 +21,6 @@
     - ~/.vim/backup
     - ~/.vim/swp
 
-- shell:
-    - "winget"
-
 - conditional: # if running linux
     if: 'uname -s'
     then:
@@ -34,8 +31,12 @@
         - "cp ~/.bash_profile ~/.OLDbash_profile\"$(date)\" || true"
     else:
         shell:
+        - ["$true", Installing submodules]
+        - winget info
         - winget
-        description: Installing windows programs
+        - winget install Audacity.Audacity
+        - winget install SlackTechnologies.Slack
+        - Get-Content -Path "windows_programs.txt" | ForEach-Object {winget install --id $_ -e}
 
 - windows:
     personalization:
