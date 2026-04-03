@@ -11,8 +11,8 @@
     ~/.bashrc: bashrc
     ~/.zshrc: zshrc
     ~/.bash_aliases: aliases
-    ~/.bash_profile: profile
-    ~/.bash_logout: logout
+    #~/.bash_profile: profile
+    #~/.bash_logout: logout
     ~/.gitconfig: gitconfig
     ~/bin: bin
 
