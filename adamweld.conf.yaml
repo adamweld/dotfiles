@@ -6,14 +6,14 @@
 - clean: ["~"]
 
 - link:
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
-    ~/.bashrc: bashrc
-    ~/.zshrc: zshrc
-    ~/.bash_aliases: aliases
-    ~/.bash_profile: profile
-    ~/.bash_logout: logout
-    ~/.gitconfig: gitconfig
+    ~/.tmux.conf: config/tmux.conf
+    ~/.vimrc: config/vimrc
+    ~/.bashrc: config/bashrc
+    ~/.zshrc: config/zshrc
+    ~/.bash_aliases: config/aliases
+    ~/.bash_profile: config/profile
+    ~/.bash_logout: config/logout
+    ~/.gitconfig: config/gitconfig
     ~/bin: bin
 
 - create:
