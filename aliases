@@ -6,7 +6,7 @@ alias mkdir='mkdir -p'
 alias la='ls -la'
 alias ll='ls -l'
 
-# cd 
+# cd
 alias ~="cd ~"
 alias u='cd ../'
 alias uu='cd ../../'
@@ -14,14 +14,6 @@ alias uuu='cd ../../../'
 alias uuuu='cd ../../../../'
 
 # modernized tools
-if command -v exa &> /dev/null
-then
-  alias l='exa -h'
-  alias ls='exa -h'
-  alias la='exa -ah'
-  alias ll='exa -lh'
-fi
-
 if command -v bat &> /dev/null
 then
   alias cat='bat -p'
@@ -67,7 +59,7 @@ alias ar='sudo apt autoremove'
 # Pacman alias examples
 alias pacupg='sudo pacman -Syu'		# Synchronize with repositories and then upgrade packages that are out of date on the local system.
 alias pacin='sudo pacman -S'		# Install specific package(s) from the repositories
-alias pacins='sudo pacman -U'		# Install specific package not from the repositories but from a file 
+alias pacins='sudo pacman -U'		# Install specific package not from the repositories but from a file
 alias pacre='sudo pacman -R'		# Remove the specified package(s), retaining its configuration(s) and required dependencies
 alias pacrem='sudo pacman -Rns'		# Remove the specified package(s), its configuration(s) and unneeded dependencies
 alias pacrep='pacman -Si'		# Display information about a given package in the repositories
@@ -77,7 +69,7 @@ alias paclocs='pacman -Qs'		# Search for package(s) in the local database
 alias paclo="pacman -Qdt"		# List all packages which are orphaned
 alias pacc="sudo pacman -Scc"		# Clean cache - delete all not currently installed package files
 alias paclf="pacman -Ql"		# List all files installed by a given package
-alias pacexpl="pacman -D --asexp"	# Mark one or more installed packages as explicitly installed 
+alias pacexpl="pacman -D --asexp"	# Mark one or more installed packages as explicitly installed
 alias pacimpl="pacman -D --asdep"	# Mark one or more installed packages as non explicitly installed
 
 # '[r]emove [o]rphans' - recursively remove ALL orphaned packages
