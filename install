@@ -4,12 +4,23 @@ set -e
 
 CONFIG="adamweld.conf.yaml"
 DOTBOT_DIR="dotbot"
+PLUGINS_DIR=".plugins"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
+git submodule update --init --recursive
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# Collect --plugin-dir flags for every directory under plugins/
+# (mirrors install.ps1's plugin discovery loop).
+PLUGIN_ARGS=()
+if [ -d "${BASEDIR}/${PLUGINS_DIR}" ]; then
+    for plugin in "${BASEDIR}/${PLUGINS_DIR}"/*/; do
+        [ -d "$plugin" ] || continue
+        PLUGIN_ARGS+=(--plugin-dir "$plugin")
+    done
+fi
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${PLUGIN_ARGS[@]}" "${@}"

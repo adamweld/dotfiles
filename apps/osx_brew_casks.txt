@@ -1,0 +1,11 @@
+# Homebrew casks (GUI apps, fonts, drivers) installed by
+# scripts/install_brew_apps.sh. One package per line. '#' starts a comment.
+# Ghostty is a base dep and lives in adamweld.conf.yaml, not here.
+#
+# Examples:
+# visual-studio-code
+# google-chrome
+# slack
+# spotify
+# rectangle
+# font-jetbrains-mono-nerd-font

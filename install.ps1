@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 $CONFIG = "adamweld.conf.yaml"
 $DOTBOT_DIR = "dotbot"
 $DOTBOT_BIN = "bin/dotbot"
-$PLUGINS_DIR = "plugins"
+$PLUGINS_DIR = ".plugins"
 $BASEDIR = $PSScriptRoot
 Set-Location $BASEDIR
 

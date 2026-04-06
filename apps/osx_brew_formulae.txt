@@ -1,0 +1,11 @@
+# Homebrew formulae (CLI tools & libraries) installed by
+# scripts/install_brew_apps.sh. One package per line. '#' starts a comment.
+# Base deps (git, curl, vim, tmux) live in adamweld.conf.yaml, not here.
+#
+# Examples:
+# exa
+# bat
+# ripgrep
+# fd
+# fzf
+# htop

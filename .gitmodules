@@ -2,8 +2,8 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 [submodule "plugins/dotbot-conditional"]
-	path = plugins/dotbot-conditional
+	path = .plugins/dotbot-conditional
 	url = https://gitlab.com/gnfzdz/dotbot-conditional.git
 [submodule "plugins/dotbot-windows"]
-	path = plugins/dotbot-windows
+	path = .plugins/dotbot-windows
 	url = git@github.com:kurtmckee/dotbot-windows.git
