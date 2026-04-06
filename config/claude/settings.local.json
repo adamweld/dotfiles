@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(infocmp xterm-ghostty:*)",
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\(''adamweld.conf.yaml''\\)\\)\")",
+      "WebFetch(domain:gitlab.com)",
+      "Bash(dotbot/bin/dotbot -c adamweld.conf.yaml --only nonexistent)",
+      "Bash(dotbot/bin/dotbot -c adamweld.conf.yaml)",
+      "WebSearch"
+    ]
+  }
+}
