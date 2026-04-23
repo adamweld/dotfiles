@@ -28,3 +28,4 @@
 	prompt = false
 [safe]
 	directory = /home/adamweld/.cache/yay/auto-cpufreq/src/opt/auto-cpufreq/
+	directory = C:/Code/dotfiles

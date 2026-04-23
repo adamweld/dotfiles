@@ -1,7 +1,10 @@
 - defaults:
     link:
+      # relink replaces existing symlinks; a regular file in the way
+      # causes a loud error instead of silent clobber. Use 'force' per
+      # entry only for files that reliably pre-exist (gitconfig).
       relink: true
-      force: true
+      create: true
 
 - clean: ["~"]
 
@@ -13,7 +16,11 @@
     ~/.bash_aliases: config/aliases
     ~/.bash_profile: config/profile
     ~/.bash_logout: config/logout
-    ~/.gitconfig: config/gitconfig
+    # Git for Windows' installer always writes ~/.gitconfig, so this one
+    # entry needs force to clobber it on first-run bootstrap.
+    ~/.gitconfig:
+      path: config/gitconfig
+      force: true
     ~/.claude/settings.json: config/claude/settings.json
     ~/bin: bin
 
@@ -29,74 +36,58 @@
 # installs belong in the per-package-manager helper scripts, not here.
 # Detection is by shell probe, so only the matching block will run.
 # Order: arch -> debian -> macOS -> windows.
+#
+# Windows is the exception: winget is not idempotent from dotbot's shell
+# task (it exits non-zero when a package is already installed, which
+# halts the run), so *all* Windows installs — base deps included — live
+# in scripts/install_winget_apps.ps1 and must be invoked manually.
 # ---------------------------------------------------------------------------
 
 - conditional: # Arch-based Linux (pacman)
     if: "command -v pacman >/dev/null 2>&1"
     then:
       shell:
-        - ["$true", "Arch: installing base deps via pacman"]
         - command: "sudo pacman -S --needed --noconfirm git curl vim tmux"
-          description: "Install core CLI tools"
+          description: "Arch: install core CLI tools"
         - command: "sudo pacman -S --needed --noconfirm ghostty || echo 'Ghostty not in repos; install from AUR manually'"
-          description: "Install Ghostty terminal"
-    else:
-      shell:
-        - ["$true", "Skipping arch-linux block: pacman not found"]
+          description: "Arch: install Ghostty terminal"
 
 - conditional: # Debian-based Linux (apt)
     if: "command -v apt-get >/dev/null 2>&1"
     then:
       shell:
-        - ["$true", "Debian: installing base deps via apt"]
         - command: "sudo apt-get update && sudo apt-get install -y git curl vim tmux"
-          description: "Install core CLI tools"
+          description: "Debian: install core CLI tools"
         - command: "command -v ghostty >/dev/null 2>&1 || echo 'Ghostty has no official Debian package; install manually from https://ghostty.org'"
-          description: "Check for Ghostty terminal"
-    else:
-      shell:
-        - ["$true", "Skipping debian-linux block: apt-get not found"]
+          description: "Debian: check for Ghostty terminal"
 
 - conditional: # macOS (Homebrew)
     if: '[ "$(uname -s)" = "Darwin" ]'
     then:
       shell:
-        - ["$true", "macOS: installing base deps via Homebrew"]
         - command: 'command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
-          description: "Bootstrap Homebrew if missing"
+          description: "macOS: bootstrap Homebrew if missing"
         - command: "brew install git curl vim tmux"
-          description: "Install core CLI tools"
+          description: "macOS: install core CLI tools"
         - command: "brew list --cask ghostty >/dev/null 2>&1 || brew install --cask ghostty"
-          description: "Install Ghostty terminal"
+          description: "macOS: install Ghostty terminal"
         # Register Ghostty's xterm-ghostty terminfo into ~/.terminfo so
         # curses apps (htop, less, etc.) don't choke on an unknown TERM.
         - command: '[ -d /Applications/Ghostty.app ] && TERMINFO=/Applications/Ghostty.app/Contents/Resources/terminfo /usr/bin/infocmp -x xterm-ghostty 2>/dev/null | tic -x -o "$HOME/.terminfo" - || true'
-          description: "Install xterm-ghostty terminfo entry"
-    else:
-      shell:
-        - ["$true", "Skipping macOS block: not running Darwin"]
+          description: "macOS: install xterm-ghostty terminfo entry"
 
-- conditional: # Windows (winget, via cmd.exe when invoked from install.ps1)
+- conditional: # Windows (dotbot-windows personalization only)
     if: "ver"
     then:
+      # winget installs (git, vim, Windows Terminal, everything else) live in
+      # scripts/install_winget_apps.ps1 — run it manually. curl is built into
+      # Windows 10+, tmux has no native build, and Ghostty has no Windows build
+      # yet (Windows Terminal is used in its place).
       - shell:
-          - ["$true", "Windows: installing base deps via winget"]
-          # curl is built into Windows 10+, tmux is not natively available.
-          # Chocolatey bootstrap lives in scripts/choco_install.ps1 and is run
-          # manually from an elevated shell, since install.ps1 must work
-          # without requiring Administrator.
-          - command: "winget install --id Git.Git -e --accept-package-agreements --accept-source-agreements"
-            description: "Install git"
-          - command: "winget install --id vim.vim -e --accept-package-agreements --accept-source-agreements"
-            description: "Install vim"
-          # Ghostty does not yet ship a Windows build; fall back to Windows Terminal.
-          - command: "winget install --id Microsoft.WindowsTerminal -e --accept-package-agreements --accept-source-agreements"
-            description: "Install Windows Terminal"
+          - command: "echo Windows: run scripts\\install_winget_apps.ps1 to install apps"
+            description: "Windows: app install reminder"
       # dotbot-windows plugin: errors out on non-Windows, so it MUST live
       # inside this conditional's then-branch, not at the top level.
       - windows:
           personalization:
             background-color: "#FFFFFF"
-    else:
-      shell:
-        - ["$true", "Skipping windows block: ver command not available (not cmd.exe)"]

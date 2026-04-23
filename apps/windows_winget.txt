@@ -1,0 +1,38 @@
+# Winget is the preferred package manager on Windows — anything listed
+# in apps/windows_choco.txt should be here instead unless winget is
+# missing that package. Installed via scripts/install_winget_apps.ps1.
+
+# Base deps (git, editor, terminal) — installed first so the rest of
+# the dotbot bootstrap has them available.
+Git.Git
+vim.vim
+Microsoft.WindowsTerminal
+
+# Dev / runtimes
+Microsoft.VisualStudioCode
+Microsoft.PowerToys
+Microsoft.DotNet.Framework.DeveloperPack_4
+Microsoft.WSL
+Python.Python.3.11
+Python.Python.3.10
+Python.Python.3.9
+PuTTY.PuTTY
+
+# Productivity / communication
+FunRoutine.WorkFlowy
+SlackTechnologies.Slack
+Google.Chrome
+Google.GoogleDrive
+
+# Media
+VideoLAN.VLC
+CodecGuide.K-LiteCodecPack.Full
+Audacity.Audacity
+Spotify.Spotify
+
+# Utilities
+qBittorrent.qBittorrent
+WinDirStat.WinDirStat
+7zip.7zip
+voidtools.Everything
+dotPDN.PaintDotNet

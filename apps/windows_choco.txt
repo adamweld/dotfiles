@@ -1,0 +1,11 @@
+# Chocolatey is a fallback for Windows packages that do not exist on
+# winget. Prefer apps/windows_winget.txt for anything available there.
+#
+# As of this writing every previously-chocolatey-installed package
+# (chrome, python, 7zip, dotnet, vlc, everything, k-lite, spotify,
+# vscode, qbittorrent, paint.net, windows terminal, wsl, workflowy)
+# has a winget equivalent, so this list is intentionally empty.
+#
+# Format: one package per line, optional extra args after the name
+# (e.g. "pkg --version 1.2.3"). Blank lines and '#' comments ignored.
+# Runs via scripts/install_choco_apps.ps1 from an elevated shell.
