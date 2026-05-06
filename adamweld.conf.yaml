@@ -22,6 +22,9 @@
       path: config/gitconfig
       force: true
     ~/.claude/settings.json: config/claude/settings.json
+    ~/.ssh/config:
+      path: config/ssh_config
+      create: true
     ~/bin: bin
 
 - create:
@@ -75,6 +78,8 @@
         # curses apps (htop, less, etc.) don't choke on an unknown TERM.
         - command: '[ -d /Applications/Ghostty.app ] && TERMINFO=/Applications/Ghostty.app/Contents/Resources/terminfo /usr/bin/infocmp -x xterm-ghostty 2>/dev/null | tic -x -o "$HOME/.terminfo" - || true'
           description: "macOS: install xterm-ghostty terminfo entry"
+        - command: "ssh-add --apple-use-keychain ~/.ssh/id_ed25519 2>/dev/null; ssh-add --apple-use-keychain ~/.ssh/id_rsa 2>/dev/null; true"
+          description: "Load SSH keys into agent with Keychain persistence"
 
 - conditional: # Windows (dotbot-windows personalization only)
     if: "ver"
