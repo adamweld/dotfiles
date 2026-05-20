@@ -21,6 +21,7 @@
     ~/.gitconfig:
       path: config/gitconfig
       force: true
+    ~/.config/starship.toml: config/starship.toml
     ~/.claude/settings.json: config/claude/settings.json
     ~/.ssh/config:
       path: config/ssh_config
@@ -70,8 +71,8 @@
       shell:
         - command: 'command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
           description: "macOS: bootstrap Homebrew if missing"
-        - command: "brew install git curl vim tmux"
-          description: "macOS: install core CLI tools"
+        - command: "missing=''; for cmd in git curl vim tmux; do command -v $cmd >/dev/null 2>&1 || missing=\"$missing $cmd\"; done; [ -z \"$missing\" ] && echo 'All core CLI tools already installed' || brew install $missing"
+          description: "macOS: install core CLI tools if missing"
         - command: "brew list --cask ghostty >/dev/null 2>&1 || brew install --cask ghostty"
           description: "macOS: install Ghostty terminal"
         # Register Ghostty's xterm-ghostty terminfo into ~/.terminfo so

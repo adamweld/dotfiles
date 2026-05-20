@@ -94,4 +94,7 @@ alias :q='exit'
 # ssh-keygen
 alias keygen='ssh-keygen -t ed25519 -C adam.weld@gmail.com'
 
+# python venv
+alias ss='source .venv/bin/activate'
+
 eval $(thefuck --alias)
