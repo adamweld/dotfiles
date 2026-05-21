@@ -1,5 +1,5 @@
 format = "$character"
-right_format = "$directory$git_branch$git_status"
+right_format = "$directory$python$git_branch"
 
 [directory]
 truncation_length = 3
@@ -11,8 +11,11 @@ format = "[$branch]($style) "
 style = "purple"
 
 [git_status]
-format = "[$all_status$ahead_behind]($style)"
-style = "red"
+disabled = true
+
+[python]
+format = "[\\($virtualenv\\) ]($style)"
+style = "yellow"
 
 [character]
 success_symbol = "[\\$](white)"
