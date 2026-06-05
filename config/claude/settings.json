@@ -8,5 +8,7 @@
   "attribution": {
     "commit": "",
     "pr": ""
-  }
+  },
+  "awaySummaryEnabled": false,
+  "alwaysThinkingEnabled": true
 }
