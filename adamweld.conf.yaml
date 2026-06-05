@@ -23,6 +23,7 @@
       force: true
     ~/.config/starship.toml: config/starship.toml
     ~/.claude/settings.json: config/claude/settings.json
+    ~/.claude/CLAUDE.md: config/claude/CLAUDE.md
     ~/.ssh/config:
       path: config/ssh_config
       create: true
