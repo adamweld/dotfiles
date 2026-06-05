@@ -4,6 +4,9 @@
   },
   "model": "claude-opus-4-6[1m]",
   "effortLevel": "xhigh",
-  "skipDangerousModePermissionPrompt": true
-  "includeCoAuthoredBy": false
+  "skipDangerousModePermissionPrompt": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  }
 }
