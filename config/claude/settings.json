@@ -10,5 +10,7 @@
     "pr": ""
   },
   "awaySummaryEnabled": false,
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "latest",
+  "tui": "fullscreen"
 }

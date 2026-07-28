@@ -10,7 +10,27 @@ git clone git@github.com:adamweld/dotfiles.git
 ./dotfiles/install
 ```
 
-On Windows, app installs are split out from the dotbot run (winget is not
+## Windows
+
+Use `install.ps1` rather than `install`:
+
+```
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+**Enable Developer Mode first.** Creating symlinks on Windows requires
+`SeCreateSymbolicLinkPrivilege`, which is granted only by Developer Mode or an
+elevated shell — without it every `link` task fails. Turn it on under
+*Settings > Privacy & security > For developers > Developer Mode*, then sign out
+and back in. (`install.ps1` checks for this before doing anything and stops with
+instructions if it's missing, so a doomed run can't half-apply and delete files
+that `force: true` was going to relink.)
+
+Python does *not* need to be installed by hand: `install.ps1` bootstraps it via
+winget when missing. It also ignores the `python.exe`/`python3.exe` stubs under
+`WindowsApps` — those are Microsoft Store redirects, not real interpreters.
+
+App installs are split out from the dotbot run (winget is not
 idempotent from inside dotbot). After `./dotfiles/install.ps1`, run either
 or both of these installer scripts — their package lists live under `apps/`:
 

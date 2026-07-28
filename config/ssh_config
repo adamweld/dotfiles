@@ -4,6 +4,10 @@
 Include ~/.orbstack/ssh/config
 
 Host *
+  # UseKeychain is macOS-only. Without IgnoreUnknown, OpenSSH on Windows and
+  # Linux does not merely warn -- it terminates ("Bad configuration option"),
+  # which breaks every ssh invocation including git push. Must precede it.
+  IgnoreUnknown UseKeychain
   AddKeysToAgent yes
   UseKeychain yes
 
